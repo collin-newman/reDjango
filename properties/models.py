@@ -1,4 +1,3 @@
-from bdb import effective
 from django.db import models
 
 # Create your models here.
