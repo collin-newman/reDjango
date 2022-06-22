@@ -3,6 +3,7 @@ from django.db import models
 # Create your models here.
 class Properties(models.Model):
     # General Info
+    city = models.CharField(max_length=200, default='')
     state = models.CharField(max_length=30, default='')
     zipcode = models.SmallIntegerField(default=None)
     neighborhood = models.CharField(max_length=200, default='')
@@ -40,4 +41,3 @@ class Properties(models.Model):
     cap_rate = models.FloatField(default=None)
     cash_on_cash = models.FloatField(default=None)
 
-    
