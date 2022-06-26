@@ -9,12 +9,12 @@ from properties.models import Properties
 
 
 @csrf_exempt
-def index(request):
+def get_all_properties(request):
     return HttpResponse(Properties.objects.all().values())
 
 
 @csrf_exempt
-def get_all_by_property(request):
+def filter_all_by_attribute(request):
     body = json.loads(request.body)
     request_filters = {}
     for key in body:
