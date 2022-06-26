@@ -2,13 +2,18 @@ from django.db import models
 
 # Create your models here.
 class Properties(models.Model):
-    # General Info
+    # Primary Key
+    full_address = models.CharField(max_length=300, default='', primary_key=True)
+    # Location data
+    address_line_1 = models.CharField(max_length=200, default='')
+    address_line_2 = models.CharField(max_length=100, default='')
     city = models.CharField(max_length=200, default='')
     state = models.CharField(max_length=30, default='')
     zipcode = models.SmallIntegerField(default=None)
     neighborhood = models.CharField(max_length=200, default='')
     lat = models.FloatField(default=None)
     long = models.FloatField(default=None)
+    # General Info
     property_type = models.CharField(max_length=30, default='')
     septic_tank = models.BooleanField(default=False)
     garage_spaces = models.SmallIntegerField(default=None)
@@ -21,7 +26,7 @@ class Properties(models.Model):
     closing_costs = models.IntegerField(default=None)
     equity_required = models.IntegerField(default=None)
     mortgage = models.SmallIntegerField(default=None)
-    mortgate_rate = models.FloatField(default=None)
+    mortgage_rate = models.FloatField(default=None)
 
     # Income
     rent = models.SmallIntegerField(default=None)
