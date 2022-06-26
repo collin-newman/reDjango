@@ -5,7 +5,7 @@ INSERT INTO properties_properties(
   zipcode,
   neighborhood,
   lat,
-  long,
+  lon,
   property_type,
   septic_tank,
   garage_spaces,

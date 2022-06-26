@@ -42,7 +42,7 @@ def ingest_single(request):
         zipcode=body['zipcode'],
         neighborhood=body['neighborhood'],
         lat=body['lat'],
-        long=body['long'],
+        lon=body['lon'],
         property_type=body['property_type'],
         septic_tank=body['septic_tank'],
         garage_spaces=body['garage_spaces'],

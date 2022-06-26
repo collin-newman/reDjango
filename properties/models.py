@@ -12,7 +12,7 @@ class Properties(models.Model):
     zipcode = models.SmallIntegerField(default=None)
     neighborhood = models.CharField(max_length=200, default='')
     lat = models.FloatField(default=None)
-    long = models.FloatField(default=None)
+    lon = models.FloatField(default=None)
     # General Info
     property_type = models.CharField(max_length=30, default='')
     septic_tank = models.BooleanField(default=False)

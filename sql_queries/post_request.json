@@ -7,7 +7,7 @@
   "zipcode": "23518",
   "neighborhood": "Ocean View",
   "lat": 38.23,
-  "long": 45.21,
+  "lon": 45.21,
   "property_type": "SFH",
   "septic_tank": false,
   "garage_spaces": 2,
