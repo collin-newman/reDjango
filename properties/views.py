@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
 from django.contrib.gis.geos import Point
+from django.db import connection
 
 from properties.models import Properties
 
@@ -80,3 +81,20 @@ def ingest_batch(request):
     body = json.loads(request.body)
 
     return HttpResponse('batch recored endpoint')
+
+
+@csrf_exempt
+def polygon_search(request):
+    body = json.loads(request.body)
+    geo_polygon = body['geo_polygon']
+    polygon_query = f"""
+        SELECT *
+        FROM properties_properties
+        WHERE ST_Contains(ST_GEOMFROMTEXT('SRID=4326;
+            {geo_polygon}
+        '), properties_properties.POINT);
+    """
+    cursor = connection.cursor()
+    cursor.execute(polygon_query)
+    properties = cursor.fetchall()
+    return HttpResponse(properties)

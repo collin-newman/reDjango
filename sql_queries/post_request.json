@@ -8,6 +8,7 @@
   "neighborhood": "Ocean View",
   "lat": 38.23,
   "lon": 45.21,
+  "point": "POINT(38.23, 45.21)",
   "property_type": "SFH",
   "septic_tank": false,
   "garage_spaces": 2,
