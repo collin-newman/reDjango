@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.gis.db import models
 
 # Create your models here.
 class Properties(models.Model):
@@ -13,6 +14,7 @@ class Properties(models.Model):
     neighborhood = models.CharField(max_length=200, default='')
     lat = models.FloatField(default=None)
     lon = models.FloatField(default=None)
+    point = models.PointField(null=True)
     # General Info
     property_type = models.CharField(max_length=30, default='')
     septic_tank = models.BooleanField(default=False)

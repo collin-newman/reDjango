@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
+from django.contrib.gis.geos import Point
 
 from properties.models import Properties
 
@@ -43,6 +44,7 @@ def ingest_single(request):
         neighborhood=body['neighborhood'],
         lat=body['lat'],
         lon=body['lon'],
+        point=Point(body['lat'], body['lon']),
         property_type=body['property_type'],
         septic_tank=body['septic_tank'],
         garage_spaces=body['garage_spaces'],
