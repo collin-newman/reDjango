@@ -4,7 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 from django.contrib.gis.geos import Point
 from django.db import connection
-
+from django.http import JsonResponse
 from properties.models import Properties
 
 # Create your views here.
@@ -12,7 +12,12 @@ from properties.models import Properties
 
 @csrf_exempt
 def get_all_properties(request):
-    return HttpResponse(Properties.objects.all().values())
+    all_records = []
+    for property in Properties.objects.all().values():
+        property["point"] = property["point"].wkt
+        all_records.append(property)
+
+    return JsonResponse(all_records, safe=False)
 
 
 @csrf_exempt
@@ -73,7 +78,7 @@ def ingest_single(request):
 
     new_property.save()
     print(f'Ingesting: {full_address}')
-    return HttpResponse(f'Ingesting: {full_address}')
+    return HttpResponse(f'Ingesting: {full_address}', content_type='application/json')
 
 
 @csrf_exempt
