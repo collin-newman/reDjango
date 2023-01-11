@@ -1,5 +1,7 @@
+from datetime import datetime
 from django.db import models
 from django.contrib.gis.db import models
+import django
 
 # TODO change all integar models over to Floats that deal with money
 
@@ -21,10 +23,10 @@ class Properties(models.Model):
     property_type = models.CharField(max_length=30, default='')
     septic_tank = models.BooleanField(default=False)
     garage_spaces = models.SmallIntegerField(default=None)
-    property_sub_type = models.CharField(max_length=30, defualt='')
+    property_sub_type = models.CharField(max_length=30, default='')
     septic_tank = models.BooleanField(default=False)
     garage_spaces = models.SmallIntegerField(default=None)
-    last_updated_date = models.DateTimeField(default=None)
+    last_updated_date = models.DateTimeField(default=django.utils.timezone.now)
     list_date: models.DateTimeField(default=None)
     us_real_estate_api_id = models.CharField(max_length=20, default='')
     is_new_construction = models.BooleanField(default=False)
